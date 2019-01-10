@@ -123,10 +123,13 @@ public class Usuario extends AppCompatActivity {
 
 
                 /**
+                 *
                  // start picker to get image for cropping and then use the image in cropping activity
                  CropImage.activity()
                  .setGuidelines(CropImageView.Guidelines.ON)
-                 .start(Usuario.this);      */
+                 .start(Usuario.this);
+
+                 */
 
 
             }
@@ -169,7 +172,7 @@ public class Usuario extends AppCompatActivity {
                 Uri resultUri = result.getUri();
 
                 String current_user_id = usuario.getUid();
-
+                String correia = "Um";
                 final StorageReference filepath = imageStorage.child("imagem_perfil").child(current_user_id + ".jpg");
                 filepath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
