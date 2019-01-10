@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "335579306241",
+    "firebase_url": "https://policianacional5-55e4a.firebaseio.com",
+    "project_id": "policianacional5-55e4a",
+    "storage_bucket": "policianacional5-55e4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335579306241:android:2a2f344d74554e6d",
+        "android_client_info": {
+          "package_name": "ao.co.policia.policianacional"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "335579306241-5u7vh2euif63r71dfhs64bp4vfqt7tcg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHp-GCs7HTTk-bQf8udML7DUKYG2uQhSg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

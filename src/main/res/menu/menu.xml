@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item
+        android:id="@+id/menu1"
+        android:title="Minha Conta"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/me"
+        android:title="Meu teste"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu2"
+        android:title="Fazer Denuncias"
+        app:showAsAction="never"/>
+
+
+    <item
+        android:id="@+id/mene3"
+        android:title="Listas dos Utilizadores"
+        app:showAsAction="never"/>
+
+    <item
+        
+        android:id="@+id/mene4"
+        android:title=""
+        android:icon="@drawable/ic_action_pesquisar"
+        app:showAsAction="ifRoom"
+        app:actionViewClass="android.widget.SearchView" />
+    <item
+        android:id="@+id/fora"
+        android:title="Cadastrar Foragidos"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item5"
+        android:title="Sair"
+        app:showAsAction="never"/>
+
+</menu>
