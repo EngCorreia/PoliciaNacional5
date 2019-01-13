@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -49,9 +50,9 @@ public class Usuario extends AppCompatActivity {
     TextView nomeConta, statusConta;
     Button novaConta, imagemStatus;
     ProgressDialog progressDialog;
+    private CardView cardView3,cardView4;
 
     private static final int GALLERIA = 1;
-
     //store fire base
     private StorageReference imageStorage;
 
@@ -64,16 +65,18 @@ public class Usuario extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.tooUsuario);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Conta do Usuario");
+        getSupportActionBar().setTitle("CONTA DO USUARIO");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        /** inicio das declaçoes das views */
         imageStorage = FirebaseStorage.getInstance().getReference();
         tabLayout = findViewById(R.id.tabLayout);
         imageConta = (CircleImageView) findViewById(R.id.profile_image);
         nomeConta = (TextView) findViewById(R.id.nome);
         statusConta = (TextView) findViewById(R.id.status);
-        novaConta = (Button) findViewById(R.id.criarConta);
-        imagemStatus = (Button) findViewById(R.id.imagens);
+
+
+        cardView3=(CardView)findViewById(R.id.conta2);
+        cardView4=(CardView)findViewById(R.id.conta3);
 
         progressDialog = new ProgressDialog(Usuario.this);
         progressDialog.setMessage("Aguardando Resposta.....");
@@ -100,7 +103,6 @@ public class Usuario extends AppCompatActivity {
                     nomeConta.setText("Usuario : " + nome);
                     statusConta.setText("Status : " + status);
                     Picasso.get().load(imagem).into(imageConta);
-                    //Picasso.get().load(imagem).into(imageConta);
 
                 }
             }
@@ -112,7 +114,7 @@ public class Usuario extends AppCompatActivity {
         });
 
 
-        imagemStatus.setOnClickListener(new View.OnClickListener() {
+        cardView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -136,7 +138,7 @@ public class Usuario extends AppCompatActivity {
         });
 
 
-        novaConta.setOnClickListener(new View.OnClickListener() {
+        cardView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String status_valor = statusConta.getText().toString();
@@ -154,7 +156,7 @@ public class Usuario extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == GALLERIA && resultCode == RESULT_OK) {
-            //  progressDialog.show();
+            progressDialog.show();
             Uri imageUri = data.getData();
 
             CropImage.activity(imageUri)

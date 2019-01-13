@@ -6,10 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,8 +26,9 @@ public class Status extends AppCompatActivity {
 
 
     private Toolbar toolbar;
-    private TextInputLayout statusConta;
+    private EditText statusConta;
     private Button botao;
+    private CardView cardView;
 
     private ProgressDialog progressDialog;
 
@@ -43,15 +46,15 @@ public class Status extends AppCompatActivity {
 
         String status_values = getIntent().getStringExtra("status_val");
 
-        statusConta = (TextInputLayout) findViewById(R.id.imagemStatus);
-        botao = (Button) findViewById(R.id.button);
+        statusConta = (EditText) findViewById(R.id.imagemStatus);
+        cardView = (CardView) findViewById(R.id.button);
 
         toolbar = findViewById(R.id.status1);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("status da Conta");
+        getSupportActionBar().setTitle("STATUS DO USUARIO");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        statusConta.getEditText().setText(status_values);
+        statusConta.setText(status_values);
 
         // fire base
         usuarioId = FirebaseAuth.getInstance().getCurrentUser();
@@ -59,7 +62,7 @@ public class Status extends AppCompatActivity {
         statusDataBase = FirebaseDatabase.getInstance().getReference().child("usuarios").child(id);
 
 
-        botao.setOnClickListener(new View.OnClickListener() {
+        cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 progressDialog = new ProgressDialog(Status.this);
@@ -68,7 +71,7 @@ public class Status extends AppCompatActivity {
 
                 progressDialog.show();
 
-                String stat = statusConta.getEditText().getText().toString();
+                String stat = statusConta.getText().toString();
                 statusDataBase.child("status").setValue(stat).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

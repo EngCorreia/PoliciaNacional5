@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -32,7 +33,7 @@ public class RegistoActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextInputLayout usuario;
     private TextView email, senha;
-    private Button registar;
+    private CardView cardView;
     DatabaseReference myRef;
 
 
@@ -56,7 +57,7 @@ public class RegistoActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.tCriaConta);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Criar Conta");
+        getSupportActionBar().setTitle("CRIAR CONTA DE USUARIO");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /**
@@ -64,10 +65,10 @@ public class RegistoActivity extends AppCompatActivity {
          *
          * */
 
-        usuario = (TextInputLayout) findViewById(R.id.nomeUsuario);
+        cardView=(CardView)findViewById(R.id.conta);
         email = (TextView) findViewById(R.id.nomeEmail);
         senha = (TextView) findViewById(R.id.senha);
-        registar = (Button) findViewById(R.id.registo);
+
 
 
         /**
@@ -76,7 +77,7 @@ public class RegistoActivity extends AppCompatActivity {
          * */
 
 
-        registar.setOnClickListener(new View.OnClickListener() {
+        cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

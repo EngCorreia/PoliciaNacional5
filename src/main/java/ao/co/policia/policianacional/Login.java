@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,6 +29,7 @@ public class Login extends AppCompatActivity {
     private TextView email, senha;
     private Button login;
     ProgressDialog progressBar;
+    private CardView cardView;
 
     private FirebaseAuth mAuth;
 
@@ -41,16 +43,19 @@ public class Login extends AppCompatActivity {
 
         progressBar = new ProgressDialog(this);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Login");
+        getSupportActionBar().setTitle("LOGIN");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         email = (TextView) findViewById(R.id.email);
         senha = (TextView) findViewById(R.id.senha);
-        login = (Button) findViewById(R.id.login);
+
+        cardView = (CardView)findViewById(R.id.lg);
 
 
-        login.setOnClickListener(new View.OnClickListener() {
+
+
+        cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
