@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import ao.co.policia.policianacional.R;
@@ -36,7 +38,9 @@ public class DenunciadosAdapter extends RecyclerView.Adapter<DenunciadosAdapter.
         holder.data.setText(lista.get(position).getDatas());
         holder.tipo.setText(lista.get(position).getTipoDenunca());
         holder.crime.setText(lista.get(position).getCrime());
-        holder.imagem.setImageResource(lista.get(position).getImagem());
+       // holder.imagem.setImageResource();
+        Picasso.get().load(lista.get(position).getImagem()).into(holder.imagem);
+
 
     }
 

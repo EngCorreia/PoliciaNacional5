@@ -7,12 +7,12 @@ public class Foragido {
     private String descricao;
     private String crime;
     private String datas;
-    private int imagem;
+    private String imagem;
 
     public Foragido() {
     }
 
-    public Foragido(String codigo, String nome, String descricao, String crime, String datas, int imagem) {
+    public Foragido(String codigo, String nome, String descricao, String crime, String datas, String imagem) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
@@ -61,11 +61,11 @@ public class Foragido {
         this.datas = datas;
     }
 
-    public int getImagem() {
+    public String getImagem() {
         return imagem;
     }
 
-    public void setImagem(int imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 }

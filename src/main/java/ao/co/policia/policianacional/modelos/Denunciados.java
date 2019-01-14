@@ -21,7 +21,6 @@ public class Denunciados {
         this.imagem = imagem;
     }
 
-
     public String getCodigo() {
         return codigo;
     }

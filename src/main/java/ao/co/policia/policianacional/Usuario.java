@@ -50,7 +50,7 @@ public class Usuario extends AppCompatActivity {
     TextView nomeConta, statusConta;
     Button novaConta, imagemStatus;
     ProgressDialog progressDialog;
-    private CardView cardView3,cardView4;
+    private CardView cardView2,cardView3;
 
     private static final int GALLERIA = 1;
     //store fire base
@@ -73,11 +73,14 @@ public class Usuario extends AppCompatActivity {
         imageConta = (CircleImageView) findViewById(R.id.profile_image);
         nomeConta = (TextView) findViewById(R.id.nome);
         statusConta = (TextView) findViewById(R.id.status);
+        cardView2=(CardView)findViewById(R.id.conta2);
+        cardView3=(CardView)findViewById(R.id.conta3);
+
+        /** Fim das declaçoes das views */
 
 
-        cardView3=(CardView)findViewById(R.id.conta2);
-        cardView4=(CardView)findViewById(R.id.conta3);
 
+        /** inicio do codigo das views */
         progressDialog = new ProgressDialog(Usuario.this);
         progressDialog.setMessage("Aguardando Resposta.....");
         progressDialog.setTitle("Processando seu Status");
@@ -99,11 +102,11 @@ public class Usuario extends AppCompatActivity {
                     String polegada = dataSnapshot.child("imagem_tam").getValue().toString();
 
                     progressDialog.dismiss();
-
+                    /** o nome do usuario e o estatus é mostrado na tela do usuario */
                     nomeConta.setText("Usuario : " + nome);
-                    statusConta.setText("Status : " + status);
-                    Picasso.get().load(imagem).into(imageConta);
-
+                    statusConta.setText( status);
+                    Picasso.get().load(imagem).into(imageConta);// Este codigo mostra a imagem na tela
+                    /** fim da conta do usuario*/
                 }
             }
 
@@ -114,7 +117,20 @@ public class Usuario extends AppCompatActivity {
         });
 
 
-        cardView4.setOnClickListener(new View.OnClickListener() {
+
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String status_valor = statusConta.getText().toString();
+                Intent status = new Intent(Usuario.this, Status.class);
+
+                status.putExtra("status_val", status_valor);
+                startActivity(status);
+            }
+        });
+
+
+        cardView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -136,20 +152,7 @@ public class Usuario extends AppCompatActivity {
 
             }
         });
-
-
-        cardView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String status_valor = statusConta.getText().toString();
-                Intent status = new Intent(Usuario.this, Status.class);
-
-                status.putExtra("status_val", status_valor);
-                startActivity(status);
-            }
-        });
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -170,11 +173,9 @@ public class Usuario extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
 
-
                 Uri resultUri = result.getUri();
 
                 String current_user_id = usuario.getUid();
-                String correia = "Um";
                 final StorageReference filepath = imageStorage.child("imagem_perfil").child(current_user_id + ".jpg");
                 filepath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override

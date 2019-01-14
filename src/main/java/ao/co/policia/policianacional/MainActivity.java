@@ -2,7 +2,6 @@ package ao.co.policia.policianacional;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,16 +12,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,7 +27,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import ao.co.policia.policianacional.adpteres.ForagidoAdapter;
 import ao.co.policia.policianacional.adpteres.FragamentoAdapter;
 import ao.co.policia.policianacional.modelos.Foragido;
 
@@ -102,11 +95,11 @@ public class MainActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot dados : dataSnapshot.getChildren()) {
 
-                            mlista.add(new Foragido(dados.child("codigo").getValue().toString(), dados.child("nome").getValue(String.class), dados.child("descricao").getValue(String.class), dados.child("crime").getValue(String.class), dados.child("data").getValue(String.class), R.drawable.user1));
+                            mlista.add(new Foragido(dados.child("codigo").getValue().toString(), dados.child("nome").getValue(String.class), dados.child("descricao").getValue(String.class), dados.child("crime").getValue(String.class), dados.child("data").getValue(String.class), dados.child("imagem").getValue(String.class)));
 
                         }
                        // progressDialog.dismiss();
-                        ForagidoAdapter fora = new ForagidoAdapter(mlista);
+                        Sobre.ForagidoAdapter fora = new Sobre.ForagidoAdapter(mlista);
 
                         recyclerView.setAdapter(fora);
 
