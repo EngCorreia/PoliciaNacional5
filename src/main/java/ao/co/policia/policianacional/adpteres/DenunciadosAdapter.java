@@ -38,7 +38,7 @@ public class DenunciadosAdapter extends RecyclerView.Adapter<DenunciadosAdapter.
         holder.data.setText(lista.get(position).getDatas());
         holder.tipo.setText(lista.get(position).getTipoDenunca());
         holder.crime.setText(lista.get(position).getCrime());
-       // holder.imagem.setImageResource();
+       /** holder.imagem.setImageResource();*/
         Picasso.get().load(lista.get(position).getImagem()).into(holder.imagem);
 
 

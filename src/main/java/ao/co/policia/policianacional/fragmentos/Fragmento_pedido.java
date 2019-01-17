@@ -58,7 +58,7 @@ public class Fragmento_pedido extends Fragment {
 
                 for (DataSnapshot dados : dataSnapshot.getChildren()) {
 
-                    mlista.add(new Denunciados(dados.child("codigo").getValue().toString(), dados.child("nome").getValue(String.class), dados.child("data").getValue(String.class), dados.child("crime").getValue(String.class), dados.child("denuncia").getValue(String.class), R.drawable.user3));
+                    mlista.add(new Denunciados(dados.child("codigo").getValue().toString(), dados.child("nome").getValue(String.class), dados.child("data").getValue(String.class), dados.child("crime").getValue(String.class), dados.child("denuncia").getValue(String.class), dados.child("imagem").getValue(String.class)));
 
                 }
                 progressDialog.dismiss();

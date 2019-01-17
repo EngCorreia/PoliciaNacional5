@@ -34,7 +34,7 @@ import ao.co.policia.policianacional.modelos.Foragido;
 public class MainActivity extends AppCompatActivity {
 
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
     private FirebaseAuth mAuth;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -58,17 +58,18 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Menu Inicial");
-        //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // getSupportActionBar().setIcon(R.drawable.poli);
+
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setIcon(R.drawable.poli);
 
 
         fragmentPagerAdapter = new FragamentoAdapter(getSupportFragmentManager());
         viewPager.setAdapter(fragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        // tabLayout.getTabAt(0).setIcon(R.drawable.ic_action_amigo);
-      //  tabLayout.getTabAt(1).setIcon(R.drawable.ic_action_chat);
-      //  tabLayout.getTabAt(2).setIcon(R.drawable.ic_action_telefone);
+         tabLayout.getTabAt(0).setIcon(R.drawable.foragidos);
+         tabLayout.getTabAt(1).setIcon(R.drawable.privado);
+         tabLayout.getTabAt(2).setIcon(R.drawable.publico);
 
 
     }

@@ -48,12 +48,12 @@ public class FragamentoAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0:
-                return "Foragidos";
+                return "FORAGIDO";
 
             case 1:
-                return "Conctatos";
+                return "PRIVADO";
             case 2:
-                return "Denunciados";
+                return "DENUNCIADO";
             default:
                 return null;
         }

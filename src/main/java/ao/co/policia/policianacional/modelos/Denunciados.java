@@ -7,12 +7,13 @@ public class Denunciados {
     private String datas;
     private String tipoDenunca;
     private String crime;
-    private int imagem;
+    private String imagem;
 
     public Denunciados() {
     }
 
-    public Denunciados(String codigo, String nome, String datas, String tipoDenunca, String crime, int imagem) {
+
+    public Denunciados(String codigo, String nome, String datas, String tipoDenunca, String crime, String imagem) {
         this.codigo = codigo;
         this.nome = nome;
         this.datas = datas;
@@ -61,11 +62,13 @@ public class Denunciados {
         this.crime = crime;
     }
 
-    public int getImagem() {
+    public String getImagem() {
         return imagem;
     }
 
-    public void setImagem(int imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 }
+
+

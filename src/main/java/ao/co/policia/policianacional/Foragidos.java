@@ -175,13 +175,13 @@ public class Foragidos extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                          //  progressDialog.dismiss();
+                                            progressDialog.dismiss();
 
                                             Toast.makeText(Foragidos.this, "Imagem Salvo Com Sucesso ", Toast.LENGTH_LONG).show();
                                         } else {
 
                                             Toast.makeText(Foragidos.this, "erro grave", Toast.LENGTH_LONG).show();
-                                          //  progressDialog.dismiss();
+                                             progressDialog.dismiss();
                                         }
                                     }
                                 });*/
