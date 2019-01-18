@@ -7,17 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import ao.co.policia.policianacional.R;
-import ao.co.policia.policianacional.modelos.Conctatos;
+import ao.co.policia.policianacional.modelos.Denunciados;
+import ao.co.policia.policianacional.modelos.Privados;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.viewHolher> {
+public class PrivadoAdapter extends RecyclerView.Adapter<PrivadoAdapter.viewHolher> {
 
-final List<Conctatos>lista;
+final List<Privados>lista;
 
-    public ListasAdapter(List<Conctatos> lista) {
+    public PrivadoAdapter(List<Privados> lista) {
         this.lista = lista;
     }
 
@@ -37,7 +40,7 @@ final List<Conctatos>lista;
         holder.nome.setText(lista.get(position).getNomes());
         holder.descricao.setText(lista.get(position).getDescricao());
         holder.crime.setText(lista.get(position).getLocalizacao());
-        holder.imagens.setImageResource(lista.get(position).getImagem());
+        Picasso.get().load(lista.get(position).getImagem()).into(holder.imagens);
     }
 
     @Override

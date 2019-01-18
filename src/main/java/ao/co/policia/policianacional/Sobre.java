@@ -195,13 +195,13 @@ public class Sobre extends AppCompatActivity {
             public viewHolher(@NonNull View itemView) {
                 super(itemView);
 
-                nome = (TextView) itemView.findViewById(R.id.status);
-                descricao = (TextView) itemView.findViewById(R.id.descricao);
-                imagens = (ImageView) itemView.findViewById(R.id.imgAmigos);
-                crime = (TextView) itemView.findViewById(R.id.crime);
-                datas = (TextView) itemView.findViewById(R.id.datas);
-                linha = (TextView) itemView.findViewById(R.id.linha);
-                linearLayout = (LinearLayout) itemView.findViewById(R.id.forag);
+                nome = itemView.findViewById(R.id.status);
+                descricao =  itemView.findViewById(R.id.descricao);
+                imagens = itemView.findViewById(R.id.imgAmigos);
+                crime =  itemView.findViewById(R.id.crime);
+                datas = itemView.findViewById(R.id.datas);
+                linha = itemView.findViewById(R.id.linha);
+                linearLayout = itemView.findViewById(R.id.forag);
 
             }
         }

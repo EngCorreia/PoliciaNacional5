@@ -42,7 +42,7 @@ public class Denucia extends AppCompatActivity {
     private Toolbar toolbar;
     private CardView btn;
     private EditText nome, data, crime;
-    private DatabaseReference banco;
+    private DatabaseReference publico,privado;
     public String tableDenuncia = "denuncias";
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
@@ -111,7 +111,9 @@ public class Denucia extends AppCompatActivity {
 
                 String id = firebaseAuth.getCurrentUser().getUid();
                 String uid = UUID.randomUUID().toString();
-                banco = FirebaseDatabase.getInstance().getReference().child(tableDenuncia).child(uid);
+                String uids = UUID.randomUUID().toString();
+                publico = FirebaseDatabase.getInstance().getReference().child(tableDenuncia).child("publica").child(uid);
+                privado = FirebaseDatabase.getInstance().getReference().child("denunciass").child("privado").child(id).child(uids);
 
                 HashMap<String, String> denun = new HashMap<>();
                 denun.put("codigo", uid);
@@ -120,8 +122,10 @@ public class Denucia extends AppCompatActivity {
                 denun.put("denuncia", spinner.getSelectedItem().toString());
                 denun.put("crime", crime.getText().toString());
                 denun.put("imagem",imagem);
-               // progressDialog.show();
-                banco.setValue(denun).addOnCompleteListener(new OnCompleteListener<Void>() {
+              // progressDialog.show();
+                privado.setValue(denun);
+
+                publico.setValue(denun).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
@@ -136,6 +140,35 @@ public class Denucia extends AppCompatActivity {
                 });
             }
         });
+
+
+
+        /** evento click para */
+
+       /** btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String id = firebaseAuth.getCurrentUser().getUid();
+                String uid = UUID.randomUUID().toString();
+               // publico = FirebaseDatabase.getInstance().getReference().child(tableDenuncia).child(uid);
+                privado = FirebaseDatabase.getInstance().getReference().child(tableDenuncia).child("privado").child(id).child(uid);
+
+                HashMap<String, String> denunc = new HashMap<>();
+                denunc.put("codigo", uid);
+                denunc.put("nome",nome.getText().toString());
+                denunc.put("data", data.getText().toString());
+                denunc.put("denuncia", spinner.getSelectedItem().toString());
+                denunc.put("crime", crime.getText().toString());
+                denunc.put("imagem",imagem);
+
+                // progressDialog.show();
+               // privado.setValue(denun);
+                privado.setValue(denunc);
+            }
+        });*/
+
+
 
 
     }

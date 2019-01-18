@@ -23,7 +23,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DenunciaAdapters extends RecyclerView.Adapter<DenunciaAdapters.myViewHolher> {
 
-    final List<Denuncias>listas;
+    final List<Denuncias> listas;
 
     public DenunciaAdapters(List<Denuncias> listas) {
         this.listas = listas;
@@ -34,18 +34,18 @@ public class DenunciaAdapters extends RecyclerView.Adapter<DenunciaAdapters.myVi
     @Override
     public myViewHolher onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_recicleviews_denuncia,parent,false);
-        final myViewHolher viewHolhe=new myViewHolher(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_recicleviews_denuncia, parent, false);
+        final myViewHolher viewHolhe = new myViewHolher(view);
 
 
         viewHolhe.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               String nome = String.valueOf(viewHolhe.getAdapterPosition());
+                String nome = String.valueOf(viewHolhe.getAdapterPosition());
                 if (!nome.equals("")) {
 
-                            Intent intents = new Intent(parent.getContext(),Denucia.class);
-                            parent.getContext().startActivity(intents);
+                    Intent intents = new Intent(parent.getContext(), Denucia.class);
+                    parent.getContext().startActivity(intents);
 
                 }
             }
@@ -58,7 +58,8 @@ public class DenunciaAdapters extends RecyclerView.Adapter<DenunciaAdapters.myVi
 
         holder.nome.setText(listas.get(position).getNome());
         holder.descricao.setText(listas.get(position).getDescricao());
-        holder.imagem.setImageResource(listas.get(position).getImagem());
+        Picasso.get().load(listas.get(position).getImagem()).into(holder.imagem);
+
 
     }
 
@@ -69,7 +70,7 @@ public class DenunciaAdapters extends RecyclerView.Adapter<DenunciaAdapters.myVi
 
     public class myViewHolher extends RecyclerView.ViewHolder {
 
-        TextView nome,descricao;
+        TextView nome, descricao;
         CircleImageView imagem;
         CardView cardView;
         LinearLayout linearLayout;
@@ -77,11 +78,11 @@ public class DenunciaAdapters extends RecyclerView.Adapter<DenunciaAdapters.myVi
         public myViewHolher(@NonNull View itemView) {
             super(itemView);
 
-         //   linearLayout=(LinearLayout)itemView.findViewById(R.id.layoutCrimes);
-            cardView=(CardView)itemView.findViewById(R.id.card);
-            nome = (TextView)itemView.findViewById(R.id.descr);
-            descricao=(TextView)itemView.findViewById(R.id.descr1);
-            imagem =(CircleImageView) itemView.findViewById(R.id.imagem);
+            //   linearLayout=(LinearLayout)itemView.findViewById(R.id.layoutCrimes);
+            cardView = itemView.findViewById(R.id.card);
+            nome = itemView.findViewById(R.id.descr);
+            descricao = itemView.findViewById(R.id.descr1);
+            imagem = itemView.findViewById(R.id.imagem);
         }
     }
 }

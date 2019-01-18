@@ -11,7 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.coremedia.iso.boxes.DataEntryUrlBox;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,21 +24,23 @@ import java.util.List;
 import java.util.UUID;
 
 import ao.co.policia.policianacional.R;
-import ao.co.policia.policianacional.adpteres.DenunciadosAdapter;
+import ao.co.policia.policianacional.adpteres.PublicoAdapter;
 import ao.co.policia.policianacional.modelos.Denunciados;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Fragmento_pedido extends Fragment {
+public class Fragmento_denunciadoss extends Fragment {
 
     private RecyclerView recyclerView;
     ProgressDialog progressDialog;
     DatabaseReference referencia;
-    List<Denunciados>mlista;
+    List<Denunciados> mlista;
+    private FirebaseUser usuario;
+    private  FirebaseAuth firebaseAuth;
 
 
-    public Fragmento_pedido() {
+    public Fragmento_denunciadoss() {
         // Required empty public constructor
     }
 
@@ -49,8 +52,11 @@ public class Fragmento_pedido extends Fragment {
         progressDialog.setTitle("Foragidos");
         progressDialog.setMessage("Por Favor Aguarde....");
         progressDialog.show();
-        String cod=UUID.randomUUID().toString();
-        referencia = FirebaseDatabase.getInstance().getReference().child("denuncias");
+        usuario= FirebaseAuth.getInstance().getCurrentUser();
+       // String uid = usuario.getUid();
+       // String cod=UUID.randomUUID().toString();
+        referencia = FirebaseDatabase.getInstance().getReference().child("denuncias").child("publica");
+      //  referencia = FirebaseDatabase.getInstance().getReference().child("denuncias");
         referencia.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -58,11 +64,11 @@ public class Fragmento_pedido extends Fragment {
 
                 for (DataSnapshot dados : dataSnapshot.getChildren()) {
 
-                    mlista.add(new Denunciados(dados.child("codigo").getValue().toString(), dados.child("nome").getValue(String.class), dados.child("data").getValue(String.class), dados.child("crime").getValue(String.class), dados.child("denuncia").getValue(String.class), dados.child("imagem").getValue(String.class)));
+                    mlista.add(new Denunciados(dados.child("codigo").getValue(String.class), dados.child("nome").getValue(String.class), dados.child("data").getValue(String.class), dados.child("crime").getValue(String.class), dados.child("denuncia").getValue(String.class), dados.child("imagem").getValue(String.class)));
 
                 }
                 progressDialog.dismiss();
-                DenunciadosAdapter fora = new DenunciadosAdapter(mlista);
+                PublicoAdapter fora = new PublicoAdapter(mlista);
 
                 recyclerView.setAdapter(fora);
 

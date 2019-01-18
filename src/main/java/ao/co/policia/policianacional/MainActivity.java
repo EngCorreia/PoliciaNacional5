@@ -48,13 +48,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mlista= new ArrayList<>();
+        mlista = new ArrayList<>();
         mAuth = FirebaseAuth.getInstance();
 
         toolbar = findViewById(R.id.tMenu);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        recyclerView = (RecyclerView)findViewById(R.id.foraRec);
+        recyclerView = (RecyclerView) findViewById(R.id.foraRec);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Menu Inicial");
@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(fragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-         tabLayout.getTabAt(0).setIcon(R.drawable.foragidos);
-         tabLayout.getTabAt(1).setIcon(R.drawable.privado);
-         tabLayout.getTabAt(2).setIcon(R.drawable.publico);
+        tabLayout.getTabAt(0).setIcon(R.drawable.foragidos);
+        tabLayout.getTabAt(1).setIcon(R.drawable.privado);
+        tabLayout.getTabAt(2).setIcon(R.drawable.publico);
 
 
     }
@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot dados : dataSnapshot.getChildren()) {
 
-                            mlista.add(new Foragido(dados.child("codigo").getValue().toString(), dados.child("nome").getValue(String.class), dados.child("descricao").getValue(String.class), dados.child("crime").getValue(String.class), dados.child("data").getValue(String.class), dados.child("imagem").getValue(String.class)));
+                            mlista.add(new Foragido(dados.child("codigo").getValue(String.class), dados.child("nome").getValue(String.class), dados.child("descricao").getValue(String.class), dados.child("crime").getValue(String.class), dados.child("data").getValue(String.class), dados.child("imagem").getValue(String.class)));
 
                         }
-                       // progressDialog.dismiss();
+                        // progressDialog.dismiss();
                         Sobre.ForagidoAdapter fora = new Sobre.ForagidoAdapter(mlista);
 
                         recyclerView.setAdapter(fora);
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.fora) {
             Intent conta2 = new Intent(MainActivity.this, Foragidos.class);
             startActivity(conta2);
-        }else if (item.getItemId()==R.id.me){
+        } else if (item.getItemId() == R.id.me) {
             Intent conta4 = new Intent(MainActivity.this, Historico.class);
             startActivity(conta4);
         }

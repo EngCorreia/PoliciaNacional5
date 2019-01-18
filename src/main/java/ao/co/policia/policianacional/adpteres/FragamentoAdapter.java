@@ -5,9 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import ao.co.policia.policianacional.fragmentos.Fragmento_amigos;
-import ao.co.policia.policianacional.fragmentos.Fragmento_pedido;
-import ao.co.policia.policianacional.fragmentos.Fragmeto_chat;
+import ao.co.policia.policianacional.fragmentos.Fragmento_foragidos;
+import ao.co.policia.policianacional.fragmentos.Fragmento_denunciadoss;
+import ao.co.policia.policianacional.fragmentos.Fragmeto_privado;
 
 public class FragamentoAdapter extends FragmentPagerAdapter {
 
@@ -23,13 +23,13 @@ public class FragamentoAdapter extends FragmentPagerAdapter {
         switch (position){
 
             case 0:
-                Fragmento_amigos fragmentoAmigos = new Fragmento_amigos();
+                Fragmento_foragidos fragmentoAmigos = new Fragmento_foragidos();
                 return fragmentoAmigos;
             case 1:
-                Fragmeto_chat fragmetoChat = new Fragmeto_chat();
+                Fragmeto_privado fragmetoChat = new Fragmeto_privado();
                 return  fragmetoChat;
             case 2:
-                Fragmento_pedido fragmentoPedido= new Fragmento_pedido();
+                Fragmento_denunciadoss fragmentoPedido= new Fragmento_denunciadoss();
                 return fragmentoPedido;
                 default:
                     return null;
@@ -53,7 +53,7 @@ public class FragamentoAdapter extends FragmentPagerAdapter {
             case 1:
                 return "PRIVADO";
             case 2:
-                return "DENUNCIADO";
+                return "DENUNCIA";
             default:
                 return null;
         }

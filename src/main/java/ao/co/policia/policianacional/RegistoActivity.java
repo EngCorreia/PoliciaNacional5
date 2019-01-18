@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,7 @@ public class RegistoActivity extends AppCompatActivity {
 
 
     private Toolbar toolbar;
-    private TextInputLayout usuario;
+    private EditText usuario;
     private TextView email, senha;
     private CardView cardView;
     DatabaseReference myRef;
@@ -66,6 +67,7 @@ public class RegistoActivity extends AppCompatActivity {
          * */
 
         cardView=(CardView)findViewById(R.id.conta);
+        usuario=findViewById(R.id.nomeUsuario);
         email = (TextView) findViewById(R.id.nomeEmail);
         senha = (TextView) findViewById(R.id.senha);
 
@@ -82,7 +84,7 @@ public class RegistoActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                String user_name = usuario.getEditText().getText().toString();
+                String user_name = usuario.getText().toString();
                 String email_user = email.getText().toString();
                 String password_user = senha.getText().toString();
 

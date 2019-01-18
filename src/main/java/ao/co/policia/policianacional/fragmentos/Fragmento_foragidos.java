@@ -29,7 +29,7 @@ import ao.co.policia.policianacional.modelos.Foragido;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Fragmento_amigos extends Fragment {
+public class Fragmento_foragidos extends Fragment {
 
     private RecyclerView recyclerView;
     private DatabaseReference referencia;
@@ -37,7 +37,7 @@ public class Fragmento_amigos extends Fragment {
     private ProgressDialog progressDialog;
 
 
-    public Fragmento_amigos() {
+    public Fragmento_foragidos() {
 
     }
 
@@ -46,7 +46,7 @@ public class Fragmento_amigos extends Fragment {
         progressDialog= new ProgressDialog(getContext());
         progressDialog.setTitle("Foragidos");
         progressDialog.setMessage("Por Favor Aguarde....");
-        progressDialog.show();
+      //  progressDialog.show();
         String cod=UUID.randomUUID().toString();
         referencia = FirebaseDatabase.getInstance().getReference().child("foragidos");
         referencia.addValueEventListener(new ValueEventListener() {
@@ -59,7 +59,7 @@ public class Fragmento_amigos extends Fragment {
                     mlista.add(new Foragido(dados.child("codigo").getValue().toString(), dados.child("nome").getValue(String.class), dados.child("descricao").getValue(String.class), dados.child("crime").getValue(String.class), dados.child("data").getValue(String.class), dados.child("imagem").getValue(String.class)));
 
                 }
-                progressDialog.dismiss();
+              //  progressDialog.dismiss();
                 Sobre.ForagidoAdapter fora = new Sobre.ForagidoAdapter(mlista);
 
                 recyclerView.setAdapter(fora);
@@ -80,12 +80,11 @@ public class Fragmento_amigos extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.foraRec);
         mlista = new ArrayList<>();
 
-
-
+        modelo1();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(container.getContext(),2));
 
-        modelo1();
+
 
         return view;
     }

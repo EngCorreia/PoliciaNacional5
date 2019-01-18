@@ -1,7 +1,7 @@
 package ao.co.policia.policianacional.modelos;
 
 public class Denuncias {
-
+/** Modelo da Classe para fazer denuncias */
     private String codigo;
     private String nome;
     private  String descricao;

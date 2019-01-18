@@ -16,11 +16,11 @@ import java.util.List;
 import ao.co.policia.policianacional.R;
 import ao.co.policia.policianacional.modelos.Denunciados;
 
-public class DenunciadosAdapter extends RecyclerView.Adapter<DenunciadosAdapter.myViewHolher> {
+public class PublicoAdapter extends RecyclerView.Adapter<PublicoAdapter.myViewHolher> {
 
     final List<Denunciados>lista;
 
-    public DenunciadosAdapter(List<Denunciados> lista) {
+    public PublicoAdapter(List<Denunciados> lista) {
         this.lista = lista;
     }
 

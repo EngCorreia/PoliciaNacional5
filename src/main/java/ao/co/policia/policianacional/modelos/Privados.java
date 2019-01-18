@@ -1,22 +1,21 @@
 package ao.co.policia.policianacional.modelos;
 
-public class Conctatos {
+public class Privados {
 
     private String nomes;
     private  String descricao;
     private String localizacao;
-    private int imagem;
+    private String imagem;
 
-    public Conctatos() {
+    public Privados() {
     }
 
-    public Conctatos(String nomes, String descricao, String localizacao, int imagem) {
+    public Privados(String nomes, String descricao, String localizacao, String imagem) {
         this.nomes = nomes;
         this.descricao = descricao;
         this.localizacao = localizacao;
         this.imagem = imagem;
     }
-
 
     public String getNomes() {
         return nomes;
@@ -42,11 +41,11 @@ public class Conctatos {
         this.localizacao = localizacao;
     }
 
-    public int getImagem() {
+    public String getImagem() {
         return imagem;
     }
 
-    public void setImagem(int imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 }
