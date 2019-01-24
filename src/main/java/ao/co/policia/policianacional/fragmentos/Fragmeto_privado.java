@@ -2,11 +2,13 @@ package ao.co.policia.policianacional.fragmentos;
 
 
 import android.app.ProgressDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,9 @@ import ao.co.policia.policianacional.modelos.Privados;
  */
 public class Fragmeto_privado extends Fragment {
 
+    //:::::::::::::::
+    private static final String ARG_ID = "id";
+    private String id;
 
     private RecyclerView recyclerView;
     private ProgressDialog progressDialog;
@@ -41,10 +46,26 @@ public class Fragmeto_privado extends Fragment {
     private FirebaseUser usuarios;
     private String user;
 
+    /*
     public Fragmeto_privado() {
         // Required empty public constructor
     }
-
+    */
+    //********************************************************************************
+    public static Fragmeto_privado newInstance (String id_){
+        Bundle bundle = new Bundle();
+        bundle.putString(ARG_ID, id_);
+        Fragmeto_privado pager =new Fragmeto_privado();
+        pager.setArguments(bundle);
+        return pager;
+    }
+    //***********************************************************************************************
+    private void readBundle(Bundle bundle){
+        if(bundle!=null){
+            id = getArguments().getString(ARG_ID);
+        }
+    }
+    //********************************************************************************
 
     public void modelo1() {
         progressDialog = new ProgressDialog(getContext());
@@ -52,8 +73,12 @@ public class Fragmeto_privado extends Fragment {
         progressDialog.setMessage("Por Favor Aguarde....");
         // progressDialog.show();
 
-        FirebaseUser usuarios = FirebaseAuth.getInstance().getCurrentUser();
-         String id = usuarios.getUid();
+        //:::::::::::::::::::
+        readBundle(getArguments());
+        //FirebaseUser usuarios = FirebaseAuth.getInstance().getCurrentUser();
+        //String id = usuarios.getUid();
+
+        Log.i(id, "user!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
         referencia = FirebaseDatabase.getInstance().getReference().child("denunciass").child("privado").child(id);
         referencia.addValueEventListener(new ValueEventListener() {

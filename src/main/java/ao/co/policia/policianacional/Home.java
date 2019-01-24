@@ -9,7 +9,8 @@ import android.widget.Button;
 
 public class Home extends AppCompatActivity {
 
-   private CardView cardView1,cardView2;
+   private Button cardView1;
+   private Button cardView2;
 
 
     @Override
@@ -18,8 +19,8 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
-        cardView1 = (CardView)findViewById(R.id.conta);
-        cardView2 = (CardView)findViewById(R.id.conta1);
+        cardView1 = findViewById(R.id.conta);
+        cardView2 = findViewById(R.id.conta1);
 
 
         cardView2.setOnClickListener(new View.OnClickListener() {

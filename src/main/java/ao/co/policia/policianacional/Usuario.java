@@ -2,6 +2,7 @@ package ao.co.policia.policianacional;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -35,6 +36,7 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Random;
 
@@ -48,9 +50,9 @@ public class Usuario extends AppCompatActivity {
     private DatabaseReference userDataBase;
     CircleImageView imageConta;
     TextView nomeConta, statusConta;
-    Button novaConta, imagemStatus;
+    Button novaConta, imagemStatus,cardView3;
     ProgressDialog progressDialog;
-    private CardView cardView2,cardView3;
+    private CardView cardView2;
 
     private static final int GALLERIA = 1;
     //store fire base
@@ -74,7 +76,7 @@ public class Usuario extends AppCompatActivity {
         nomeConta = (TextView) findViewById(R.id.nome);
         statusConta = (TextView) findViewById(R.id.status);
         cardView2=(CardView)findViewById(R.id.conta2);
-        cardView3=(CardView)findViewById(R.id.conta3);
+        cardView3=findViewById(R.id.conta3);
 
         /** Fim das declaçoes das views */
 
@@ -105,7 +107,7 @@ public class Usuario extends AppCompatActivity {
                     /** o nome do usuario e o estatus é mostrado na tela do usuario */
                     nomeConta.setText("Usuario : " + nome);
                     statusConta.setText( status);
-                    Picasso.get().load(imagem).into(imageConta);// Este codigo mostra a imagem na tela
+                    Picasso.get().load(imagem).placeholder(R.drawable.default_user).into(imageConta);// Este codigo mostra a imagem na tela
                     /** fim da conta do usuario*/
                 }
             }
@@ -175,7 +177,11 @@ public class Usuario extends AppCompatActivity {
 
                 Uri resultUri = result.getUri();
 
+                File caminho = new File(resultUri.getPath());
+
                 String current_user_id = usuario.getUid();
+
+              //  Bitmap bitmap = new Compressor(this).setMaxWidth(200).setMaxHeight(200).setQuality(75).compressToBitmap(caminho);
                 final StorageReference filepath = imageStorage.child("imagem_perfil").child(current_user_id + ".jpg");
                 filepath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override

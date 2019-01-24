@@ -62,14 +62,14 @@ public class MainActivity extends AppCompatActivity {
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getSupportActionBar().setIcon(R.drawable.poli);
 
-
-        fragmentPagerAdapter = new FragamentoAdapter(getSupportFragmentManager());
+        /*
+        fragmentPagerAdapter = new FragamentoAdapter(getSupportFragmentManager(), mAuth.getUid());
         viewPager.setAdapter(fragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setIcon(R.drawable.foragidos);
         tabLayout.getTabAt(1).setIcon(R.drawable.privado);
-        tabLayout.getTabAt(2).setIcon(R.drawable.publico);
+        tabLayout.getTabAt(2).setIcon(R.drawable.publico);*/
 
 
     }
@@ -161,8 +161,14 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser == null) {
             menuInicial();
+        }else{
+            fragmentPagerAdapter = new FragamentoAdapter(getSupportFragmentManager(), mAuth.getUid());
+            viewPager.setAdapter(fragmentPagerAdapter);
+            tabLayout.setupWithViewPager(viewPager);
 
-
+            tabLayout.getTabAt(0).setIcon(R.drawable.foragidos);
+            tabLayout.getTabAt(1).setIcon(R.drawable.privado);
+            tabLayout.getTabAt(2).setIcon(R.drawable.publico);
         }
 
     }

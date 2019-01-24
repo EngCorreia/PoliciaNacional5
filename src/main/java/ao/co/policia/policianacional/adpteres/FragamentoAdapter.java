@@ -11,9 +11,11 @@ import ao.co.policia.policianacional.fragmentos.Fragmeto_privado;
 
 public class FragamentoAdapter extends FragmentPagerAdapter {
 
-
-    public FragamentoAdapter(FragmentManager fm) {
+    String id;
+    public FragamentoAdapter(FragmentManager fm, String id) {
         super(fm);
+
+        this.id = id;
     }
 
 
@@ -26,8 +28,10 @@ public class FragamentoAdapter extends FragmentPagerAdapter {
                 Fragmento_foragidos fragmentoAmigos = new Fragmento_foragidos();
                 return fragmentoAmigos;
             case 1:
-                Fragmeto_privado fragmetoChat = new Fragmeto_privado();
-                return  fragmetoChat;
+                //Fragmeto_privado fragmetoChat = new Fragmeto_privado();
+                //Fragmeto_privado fragmetoChat = Fragmeto_privado.newInstance(id);
+                //return  fragmetoChat;
+                return Fragmeto_privado.newInstance(id);
             case 2:
                 Fragmento_denunciadoss fragmentoPedido= new Fragmento_denunciadoss();
                 return fragmentoPedido;
